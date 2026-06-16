@@ -1,0 +1,6 @@
+{
+  "name": "Kios Pupuk Tani Makmur",
+  "description": "Premium agribusiness webpage for Kios Pupuk Tani Makmur Parengan - Tuban. Offering official fertilizers, national standard seeds, smart dosage calculators, and direct WhatsApp consultations.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

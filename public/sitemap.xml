@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Brand / Beranda Utama -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Tentang Kami (Profil Kios & Tim Agronomi) -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/#about</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Daftar Katalog Produk Tani -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/#products</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Kategori Produk: Pupuk Sawah & Kebun -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/?category=pupuk</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Kategori Produk: Proteksi Tanaman (Obat & Pestisida) -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/?category=pestisida</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Kategori Produk: Benih Unggulan Certfied -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/?category=benih</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Kalkulator Dosis Sawah (Interaktif) -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/#calculator</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Hubungi Layanan e-RDKK & WhatsApp Chat -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/#contact</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Peta Lokasi / Google Maps Fisik Kios -->
+  <url>
+    <loc>https://ais-pre-ksxgj7ywqn7jco2yyg7cqr-1006436704331.asia-southeast1.run.app/#location-map</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+</urlset>
