@@ -47,7 +47,7 @@ export default function About() {
             {/* Visual Frame */}
             <div className="relative rounded-[40px] overflow-hidden bg-neutral-150 dark:bg-slate-800 aspect-[4/5] shadow-2xl group border border-[#0D3B20]/10 dark:border-white/5">
               <img
-                src="/input_file_0.png"
+                src="/about-store.png"
                 alt="Toko pupuk Parengan Tuban - Kios Pupuk Tani Makmur"
                 className="w-full h-full object-cover transform-gpu transition-transform duration-800 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-108"
                 style={{ willChange: "transform" }}

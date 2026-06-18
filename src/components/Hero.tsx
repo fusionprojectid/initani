@@ -154,7 +154,7 @@ export default function Hero() {
                 {/* Card Main Image */}
                 <div className="relative rounded-3xl overflow-hidden aspect-video shadow-md">
                   <img
-                    src="/input_file_2.png"
+                    src="/hero-showcase.png"
                     alt="Kios Pupuk Tani Makmur Parengan Tuban - Sarana Pertanian Parengan"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
