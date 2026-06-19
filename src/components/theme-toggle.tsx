@@ -73,7 +73,7 @@ export function ThemeToggle() {
         </AnimatePresence>
       </div>
 
-      <span className="text-[10px] font-black uppercase tracking-wider text-neutral-600 dark:text-slate-200 group-hover:text-[#0D3B20] dark:group-hover:text-[#70A83B] transition-colors leading-none select-none">
+      <span className="text-[10px] font-black uppercase tracking-wider text-neutral-600 dark:text-slate-200 group-hover:text-[#11341C] dark:group-hover:text-[#8FC14E] transition-colors leading-none select-none">
         {info.label}
       </span>
     </button>

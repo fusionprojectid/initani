@@ -50,13 +50,13 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
 
   return (
     <section id="contact" className="py-24 bg-[#F8FAF5] dark:bg-[#0F172A] scroll-mt-10 overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#0D3B20]/3 dark:bg-[#70A83B]/2 rounded-full filter blur-3xl -z-10"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#11341C]/3 dark:bg-[#8FC14E]/2 rounded-full filter blur-3xl -z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-[#0D3B20] bg-[#0D3B20]/8 border border-[#0D3B20]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block mb-4 font-heading dark:text-[#70A83B] dark:bg-[#70A83B]/8 dark:border-[#70A83B]/15">
+          <span className="text-[#11341C] bg-[#11341C]/8 border border-[#11341C]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block mb-4 font-heading dark:text-[#8FC14E] dark:bg-[#8FC14E]/8 dark:border-[#8FC14E]/15">
             Layanan Pelanggan
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#263238] dark:text-[#F8FAFC] tracking-tight font-heading leading-tight md:leading-[1.12]">
@@ -74,11 +74,11 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 18 }}
-            className="lg:col-span-5 bg-gradient-to-br from-[#1a441c] to-[#0D3B20] text-white rounded-[36px] p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden"
+            className="lg:col-span-5 bg-gradient-to-br from-[#1a441c] to-[#11341C] text-white rounded-[36px] p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden"
           >
             {/* Dynamic visual rings in background */}
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5 rounded-full filter blur-xl"></div>
-            <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-[#70A83B]/10 rounded-full filter blur-2xl"></div>
+            <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-[#8FC14E]/10 rounded-full filter blur-2xl"></div>
             
             <div className="relative z-10 space-y-10">
               <div>
@@ -91,7 +91,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                 
                 {/* Phone */}
                 <div className="flex items-start space-x-4 group">
-                  <div className="bg-white/10 p-3.5 rounded-2xl group-hover:bg-[#70A83B]/20 transition-colors shrink-0">
+                  <div className="bg-white/10 p-3.5 rounded-2xl group-hover:bg-[#8FC14E]/20 transition-colors shrink-0">
                     <Phone className="h-5.5 w-5.5 text-white" />
                   </div>
                   <div>
@@ -102,7 +102,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
 
                 {/* Address */}
                 <div className="flex items-start space-x-4 group">
-                  <div className="bg-white/10 p-3.5 rounded-2xl group-hover:bg-[#70A83B]/20 transition-colors shrink-0">
+                  <div className="bg-white/10 p-3.5 rounded-2xl group-hover:bg-[#8FC14E]/20 transition-colors shrink-0">
                     <MapPin className="h-5.5 w-5.5 text-white" />
                   </div>
                   <div>
@@ -115,7 +115,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
 
                 {/* Hours */}
                 <div className="flex items-start space-x-4 group">
-                  <div className="bg-white/10 p-3.5 rounded-2xl group-hover:bg-[#70A83B]/20 transition-colors shrink-0">
+                  <div className="bg-white/10 p-3.5 rounded-2xl group-hover:bg-[#8FC14E]/20 transition-colors shrink-0">
                     <Clock className="h-5.5 w-5.5 text-white" />
                   </div>
                   <div>
@@ -146,7 +146,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 18 }}
-            className="lg:col-span-7 bg-white dark:bg-[#1E293B] rounded-[36px] p-8 sm:p-10 border border-[#0D3B20]/10 dark:border-white/5 shadow-2xl flex flex-col justify-center"
+            className="lg:col-span-7 bg-white dark:bg-[#1E293B] rounded-[36px] p-8 sm:p-10 border border-[#11341C]/10 dark:border-white/5 shadow-2xl flex flex-col justify-center"
           >
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
@@ -176,7 +176,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Contoh: Pak Suparjo"
                         id="form-input-name"
-                        className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#0D3B20] dark:focus:border-[#70A83B] focus:ring-1 focus:ring-[#0D3B20] dark:focus:ring-[#70A83B] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
+                        className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#11341C] dark:focus:border-[#8FC14E] focus:ring-1 focus:ring-[#11341C] dark:focus:ring-[#8FC14E] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
                       />
                     </div>
 
@@ -190,7 +190,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         placeholder="Contoh: 0813-XXXX-XXXX"
                         id="form-input-phone"
-                        className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#0D3B20] dark:focus:border-[#70A83B] focus:ring-1 focus:ring-[#0D3B20] dark:focus:ring-[#70A83B] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
+                        className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#11341C] dark:focus:border-[#8FC14E] focus:ring-1 focus:ring-[#11341C] dark:focus:ring-[#8FC14E] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
                       />
                     </div>
 
@@ -205,7 +205,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                       onChange={(e) => setCropType(e.target.value)}
                       placeholder="Contoh: Padi Sawah Inpari 32, Jagung Hibrida, Melon"
                       id="form-input-crop"
-                      className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#0D3B20] dark:focus:border-[#70A83B] focus:ring-1 focus:ring-[#0D3B20] dark:focus:ring-[#70A83B] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
+                      className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#11341C] dark:focus:border-[#8FC14E] focus:ring-1 focus:ring-[#11341C] dark:focus:ring-[#8FC14E] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
                     />
                   </div>
 
@@ -219,7 +219,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Tulis rincian pesanan herbisida, atau sampaikan keluhan serangan hama di sawah Anda..."
                       id="form-input-message"
-                      className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#0D3B20] dark:focus:border-[#70A83B] focus:ring-1 focus:ring-[#0D3B20] dark:focus:ring-[#70A83B] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
+                      className="w-full bg-[#F8FAF5] dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 focus:border-[#11341C] dark:focus:border-[#8FC14E] focus:ring-1 focus:ring-[#11341C] dark:focus:ring-[#8FC14E] rounded-xl px-4 py-3.5 text-xs font-semibold focus:outline-none transition text-[#263238] dark:text-[#F8FAFC]"
                     ></textarea>
                   </div>
 
@@ -229,7 +229,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                     type="submit"
                     disabled={loading}
                     id="form-submit-button"
-                    className="w-full bg-[#0D3B20] hover:bg-[#1B5E20] dark:bg-[#70A83B] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-4 rounded-xl font-black text-xs uppercase tracking-widest flex justify-center items-center space-x-2.5 transition shadow-lg shadow-[#0D3B20]/10 dark:shadow-none cursor-pointer disabled:opacity-50"
+                    className="w-full bg-[#11341C] hover:bg-[#1B5E20] dark:bg-[#8FC14E] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-4 rounded-xl font-black text-xs uppercase tracking-widest flex justify-center items-center space-x-2.5 transition shadow-lg shadow-[#11341C]/10 dark:shadow-none cursor-pointer disabled:opacity-50"
                   >
                     {loading ? (
                       <>
@@ -254,7 +254,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                   className="py-10 text-center flex flex-col items-center justify-center space-y-6" 
                   id="form-success-view"
                 >
-                  <div className="bg-[#0D3B20]/8 dark:bg-[#70A83B]/8 p-5.5 rounded-full text-[#0D3B20] dark:text-[#70A83B] w-fit border border-[#0D3B20]/15 dark:border-[#70A83B]/15">
+                  <div className="bg-[#11341C]/8 dark:bg-[#8FC14E]/8 p-5.5 rounded-full text-[#11341C] dark:text-[#8FC14E] w-fit border border-[#11341C]/15 dark:border-[#8FC14E]/15">
                     <CheckCircle2 className="h-12 w-12" />
                   </div>
                   
@@ -266,7 +266,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                   </div>
 
                   {/* Push to WhatsApp */}
-                  <div className="p-6 bg-gradient-to-br from-[#F8FAF5] to-white dark:from-slate-900 dark:to-[#1E293B] rounded-[24px] border border-[#0D3B20]/15 dark:border-[#70A83B]/15 max-w-md w-full shadow-sm">
+                  <div className="p-6 bg-gradient-to-br from-[#F8FAF5] to-white dark:from-slate-900 dark:to-[#1E293B] rounded-[24px] border border-[#11341C]/15 dark:border-[#8FC14E]/15 max-w-md w-full shadow-sm">
                     <p className="text-xs font-bold text-neutral-600 dark:text-slate-400 mb-4">Butuh balasan agronomi mendesak / instan?</p>
                     <motion.a
                       whileHover={{ scale: 1.02 }}
@@ -275,7 +275,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
                       target="_blank"
                       rel="noopener noreferrer"
                       id="form-success-wa-push"
-                      className="w-full bg-[#0D3B20] hover:bg-[#1B5E20] dark:bg-[#70A83B] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-4 px-4 rounded-xl font-black text-[10px] uppercase tracking-widest flex justify-center items-center space-x-2 shadow-md dark:shadow-none"
+                      className="w-full bg-[#11341C] hover:bg-[#1B5E20] dark:bg-[#8FC14E] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-4 px-4 rounded-xl font-black text-[10px] uppercase tracking-widest flex justify-center items-center space-x-2 shadow-md dark:shadow-none"
                     >
                       <Phone className="h-4.5 w-4.5" />
                       <span>Kirim Salinan pesan ke WA</span>
@@ -284,7 +284,7 @@ Mohon tanggapannya ya Kios Tani Makmur Parengan!`;
 
                   <button
                     onClick={handleReset}
-                    className="text-xs text-[#0D3B20] dark:text-[#70A83B] hover:underline font-black transition uppercase tracking-wide cursor-pointer"
+                    className="text-xs text-[#11341C] dark:text-[#8FC14E] hover:underline font-black transition uppercase tracking-wide cursor-pointer"
                   >
                     Hubungi Lagi / Kirim Pesan Baru
                   </button>

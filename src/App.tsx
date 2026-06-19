@@ -3,13 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { businessInfo } from "./data/storeData";
 import { 
-  Sprout, 
   Phone, 
   MapPin, 
-  Clock, 
   Menu, 
   X, 
   Instagram, 
@@ -17,10 +15,7 @@ import {
   MessageCircle,
   ShieldCheck,
   ChevronUp,
-  Award,
-  Sun,
-  Moon,
-  Monitor
+  Award
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { ThemeToggle } from "./components/theme-toggle";
@@ -43,12 +38,13 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showScrollBack, setShowScrollBack] = useState(false);
+  const [isMapsHovered, setIsMapsHovered] = useState(false);
+  const [isWaHovered, setIsWaHovered] = useState(false);
 
   const navLinks = [
     { label: "Beranda", id: "hero" },
     { label: "Tentang Kami", id: "about" },
     { label: "Produk", id: "products" },
-    { label: "Dosis Kalkulator", id: "calculator" },
     { label: "Galeri", id: "gallery" },
     { label: "Testimoni", id: "testimonials" },
     { label: "Tanya Jawab", id: "faq" },
@@ -87,49 +83,49 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between selection:bg-[#0D3B20]/20 selection:text-[#0D3B20] bg-[#F8FAF5] dark:bg-[#0F172A] text-[#263238] dark:text-[#F8FAFC]">
+    <div className="min-h-screen flex flex-col justify-between selection:bg-[#11341C]/20 selection:text-[#11341C] bg-[#F8FAF5] dark:bg-[#0F172A] text-[#263238] dark:text-[#F8FAFC]">
       
       {/* Premium Sticky Header Navbar */}
       <header 
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled 
-            ? "bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl py-4.5 border-b border-[#0D3B20]/10 dark:border-white/5 shadow-lg shadow-neutral-100/10 dark:shadow-black/30" 
-            : "bg-transparent py-6"
+            ? "bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xl py-4 border-b border-[#11341C]/10 dark:border-white/5 shadow-lg shadow-neutral-100/10 dark:shadow-black/30" 
+            : "bg-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center gap-x-6">
           
           {/* Logo Brand with custom micro interactions */}
           <div 
             onClick={() => scrollToSection("hero")}
-            className="flex items-center cursor-pointer group"
+            className="flex items-center cursor-pointer group shrink-0"
           >
-            <div className="bg-white p-1.5 md:p-2 rounded-xl border border-neutral-200/50 dark:border-slate-700 shadow-sm flex items-center justify-center overflow-hidden shrink-0 h-10 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow group-hover:border-neutral-300 dark:group-hover:border-slate-600">
+            <div className="flex items-center justify-center overflow-hidden shrink-0 h-10 md:h-12 xl:h-14 w-auto transition-all duration-300 group-hover:scale-[1.02]">
               <img 
-                src="/logo.png" 
+                src="/logo-transparent.png" 
                 alt="Kios Pupuk Tani Makmur Logo" 
-                className="h-full w-auto object-contain select-none" 
+                className="h-full w-auto object-contain select-none dark:brightness-0 dark:invert" 
               />
             </div>
           </div>
 
           {/* Desktop Links with smooth animations */}
-          <nav className="hidden lg:flex items-center space-x-7">
+          <nav className="hidden xl:flex items-center gap-x-4 xl:gap-x-6">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className={`relative text-xs font-black uppercase tracking-wider transition-colors py-2 cursor-pointer ${
-                    isActive ? "text-[#0D3B20] dark:text-[#70A83B]" : "text-neutral-500 dark:text-slate-400 hover:text-[#0D3B20] dark:hover:text-[#70A83B]"
+                  className={`relative text-[11px] xl:text-xs font-bold uppercase tracking-wider transition-colors py-2 cursor-pointer ${
+                    isActive ? "text-[#11341C] dark:text-[#8FC14E]" : "text-neutral-500 dark:text-slate-400 hover:text-[#11341C] dark:hover:text-[#8FC14E]"
                   }`}
                 >
                   <span>{link.label}</span>
                   {isActive && (
                     <motion.span 
                       layoutId="nav-underline" 
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0D3B20] dark:bg-[#70A83B] rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#11341C] dark:bg-[#8FC14E] rounded-full"
                       transition={{ type: "spring", stiffness: 150, damping: 20 }}
                     />
                   )}
@@ -139,7 +135,7 @@ export default function App() {
           </nav>
 
           {/* Hot CTA: Direct WA call */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden xl:flex items-center space-x-3 shrink-0">
             {/* Elegant premium client theme cycle toggle indicator button */}
             <ThemeToggle />
 
@@ -147,7 +143,7 @@ export default function App() {
               href={businessInfo.whatsAppLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-neutral-50 dark:bg-slate-800 border border-neutral-200 dark:border-slate-750 hover:border-[#0D3B20] dark:hover:border-[#70A83B] text-neutral-600 dark:text-slate-300 hover:text-[#0D3B20] dark:hover:text-[#70A83B] p-3 rounded-xl transition shadow-sm cursor-pointer"
+              className="bg-neutral-50 dark:bg-slate-800 border border-neutral-200 dark:border-slate-750 hover:border-[#11341C] dark:hover:border-[#8FC14E] text-neutral-600 dark:text-slate-300 hover:text-[#11341C] dark:hover:text-[#8FC14E] p-3 rounded-xl transition shadow-sm cursor-pointer"
               title="Hubungi Admin WA"
             >
               <Phone className="h-4.5 w-4.5" />
@@ -155,14 +151,14 @@ export default function App() {
             
             <button
               onClick={() => scrollToSection("calculator")}
-              className="bg-[#0D3B20] hover:bg-[#1B5E20] dark:bg-[#70A83B] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] px-5 py-3 rounded-xl text-[10px] font-black uppercase tracking-wider shadow-md shadow-[#0D3B20]/25 dark:shadow-[#70A83B]/15 transition cursor-pointer"
+              className="bg-[#11341C] hover:bg-[#1B5E20] dark:bg-[#8FC14E] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] px-5 py-3 rounded-xl text-[10px] font-black uppercase tracking-wider shadow-md shadow-[#11341C]/25 dark:shadow-[#8FC14E]/15 transition cursor-pointer"
             >
               Dosis Kalkulator
             </button>
           </div>
 
           {/* Mobile Menu Actions */}
-          <div className="lg:hidden flex items-center space-x-2">
+          <div className="xl:hidden flex items-center space-x-2">
             <ThemeToggle />
 
             <button
@@ -182,7 +178,7 @@ export default function App() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden bg-white/95 dark:bg-[#1E293B]/95 backdrop-blur-2xl border-t border-gray-100 dark:border-slate-800 mt-2 overflow-hidden shadow-2xl"
+              className="xl:hidden bg-white/95 dark:bg-[#1E293B]/95 backdrop-blur-2xl border-t border-gray-100 dark:border-slate-800 mt-2 overflow-hidden shadow-2xl"
             >
               <div className="px-4 py-6 space-y-3.5 animate-fadeIn">
                 {navLinks.map((link) => (
@@ -191,7 +187,7 @@ export default function App() {
                     onClick={() => scrollToSection(link.id)}
                     className={`block w-full text-left py-3.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider transition ${
                       activeSection === link.id 
-                        ? "bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A]" 
+                        ? "bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A]" 
                         : "text-neutral-600 dark:text-slate-300 hover:bg-neutral-50 dark:hover:bg-slate-800"
                     }`}
                   >
@@ -205,7 +201,7 @@ export default function App() {
                       href={businessInfo.whatsAppLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A] text-center py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 shadow-md shadow-[#0D3B20]/10"
+                      className="flex-1 bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A] text-center py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 shadow-md shadow-[#11341C]/10"
                     >
                       <Phone className="h-4 w-4" />
                       <span>WhatsApp</span>
@@ -256,10 +252,14 @@ export default function App() {
             {/* Identity column */}
             <div className="md:col-span-5 space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="bg-white p-1.5 rounded-xl h-12 w-auto flex items-center justify-center overflow-hidden shrink-0 shadow-sm border border-neutral-200/20">
-                  <img src="/logo.png" alt="Kios Pupuk Tani Makmur Logo" className="h-full w-auto object-contain select-none" />
+                <div className="bg-white dark:bg-transparent p-1.5 rounded-xl h-12 w-auto flex items-center justify-center overflow-hidden shrink-0 shadow-sm border border-neutral-200/20 dark:border-none dark:shadow-none">
+                  <img 
+                    src="/logo-transparent.png" 
+                    alt="Kios Pupuk Tani Makmur Logo" 
+                    className="h-full w-auto object-contain select-none dark:brightness-0 dark:invert" 
+                  />
                 </div>
-                <span className="font-heading font-black text-base uppercase tracking-widest text-[#70A83B]">
+                <span className="font-heading font-black text-base uppercase tracking-widest text-[#8FC14E]">
                   Tani Makmur Tuban
                 </span>
               </div>
@@ -270,14 +270,14 @@ export default function App() {
               <div className="flex items-center space-x-3.5 pt-2">
                 <a 
                   href="#" 
-                  className="bg-white/5 hover:bg-[#70A83B]/10 hover:text-[#70A83B] dark:hover:text-[#70A83B] p-2.5 rounded-xl text-[#a4ebb1] transition"
+                  className="bg-white/5 hover:bg-[#8FC14E]/10 hover:text-[#8FC14E] dark:hover:text-[#8FC14E] p-2.5 rounded-xl text-[#a4ebb1] transition"
                   title="Instagram Resmi"
                 >
                   <Instagram className="h-4.5 w-4.5" />
                 </a>
                 <a 
                   href="#" 
-                  className="bg-white/5 hover:bg-[#70A83B]/10 hover:text-[#70A83B] dark:hover:text-[#70A83B] p-2.5 rounded-xl text-[#a4ebb1] transition"
+                  className="bg-white/5 hover:bg-[#8FC14E]/10 hover:text-[#8FC14E] dark:hover:text-[#8FC14E] p-2.5 rounded-xl text-[#a4ebb1] transition"
                   title="Facebook Resmi"
                 >
                   <Facebook className="h-4.5 w-4.5" />
@@ -286,7 +286,7 @@ export default function App() {
                   href={businessInfo.whatsAppLink} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white/5 hover:bg-[#70A83B]/10 hover:text-[#70A83B] dark:hover:text-[#70A83B] p-2.5 rounded-xl text-[#a4ebb1] transition"
+                  className="bg-white/5 hover:bg-[#8FC14E]/10 hover:text-[#8FC14E] dark:hover:text-[#8FC14E] p-2.5 rounded-xl text-[#a4ebb1] transition"
                   title="WhatsApp Admin"
                 >
                   <MessageCircle className="h-4.5 w-4.5" />
@@ -302,7 +302,7 @@ export default function App() {
                   <li key={link.id}>
                     <button
                       onClick={() => scrollToSection(link.id)}
-                      className="text-xs text-neutral-400 hover:text-[#70A83B] dark:hover:text-[#70A83B] transition font-semibold cursor-pointer"
+                      className="text-xs text-neutral-400 hover:text-[#8FC14E] dark:hover:text-[#8FC14E] transition font-semibold cursor-pointer"
                     >
                       • {link.label}
                     </button>
@@ -316,7 +316,7 @@ export default function App() {
               <h4 className="text-xs font-black uppercase tracking-wider text-neutral-300 font-heading">Legalitas Pengecer</h4>
               <div className="bg-white/5 p-5 rounded-2xl border border-white/5 space-y-4">
                 <div className="flex items-start space-x-3.5">
-                  <ShieldCheck className="h-5.5 w-5.5 text-[#70A83B] dark:text-[#70A83B] shrink-0 mt-0.5" />
+                  <ShieldCheck className="h-5.5 w-5.5 text-[#8FC14E] dark:text-[#8FC14E] shrink-0 mt-0.5" />
                   <div>
                     <h5 className="text-xs font-bold text-white">Sertifikat Resmi KPL</h5>
                     <p className="text-[11px] text-neutral-400 mt-1 leading-relaxed">
@@ -361,17 +361,30 @@ export default function App() {
       >
         {/* Google Maps Floating Button */}
         <a
-          href="https://www.google.com/maps/place/Kios+Pupuk+Tani+Makmur,+Jl.+Dharma+Bhakti,+Rembun,+Kumpulrejo,+Parengan,+Tuban+Regency,+East+Java+62366/data=!4m2!3m1!1s0x2e7777c683d35973:0x2b733b455dfae10a"
+          href="https://www.google.com/maps/place/UD.+TANI+MAKMUR/@-7.0714666,111.8210722,21z/data=!4m14!1m7!3m6!1s0x2e7777c683d35973:0x2b733b455dfae10a!2sUD.+TANI+MAKMUR!8m2!3d-7.0715001!4d111.8210532!16s%2Fg%2F11qy6ch09c!3m5!1s0x2e7777c683d35973:0x2b733b455dfae10a!8m2!3d-7.0715001!4d111.8210532!16s%2Fg%2F11qy6ch09c?authuser=1&entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center space-x-3 group bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-[#263238] font-bold p-3.5 rounded-full shadow-2xl transition-all duration-300 relative hover:scale-105"
+          onMouseEnter={() => setIsMapsHovered(true)}
+          onMouseLeave={() => setIsMapsHovered(false)}
+          className="flex items-center justify-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-[#263238] font-bold p-3.5 rounded-full shadow-2xl transition-all duration-300 relative hover:scale-105 h-[50px] min-w-[50px]"
           id="persistent-maps-assist"
-          title="Petunjuk Rute Kios"
         >
-          <MapPin className="h-5.5 w-5.5 stroke-[2.2]" />
-          <span className="max-w-0 overflow-hidden group-hover:max-w-[150px] transition-all duration-500 text-[11px] font-black uppercase tracking-wider block whitespace-nowrap leading-none pl-0 group-hover:pl-1.5">
-            Petunjuk Rute
-          </span>
+          {/* Pulse Ripple Effect behind */}
+          <span className="absolute inset-0 bg-amber-500/30 rounded-full -z-10 animate-ping"></span>
+          <MapPin className="h-5.5 w-5.5 stroke-[2.2] shrink-0" />
+          <AnimatePresence initial={false}>
+            {isMapsHovered && (
+              <motion.span
+                initial={{ width: 0, opacity: 0, marginLeft: 0 }}
+                animate={{ width: "auto", opacity: 1, marginLeft: 8 }}
+                exit={{ width: 0, opacity: 0, marginLeft: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden text-[11px] font-black uppercase tracking-wider block whitespace-nowrap leading-none"
+              >
+                Petunjuk Rute
+              </motion.span>
+            )}
+          </AnimatePresence>
         </a>
 
         {/* WhatsApp Floating Button */}
@@ -379,16 +392,27 @@ export default function App() {
           href={businessInfo.whatsAppLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center space-x-3 group bg-[#25D366] hover:bg-[#128C7E] text-white p-3.5 rounded-full shadow-2xl transition-all duration-300 relative hover:scale-105"
+          onMouseEnter={() => setIsWaHovered(true)}
+          onMouseLeave={() => setIsWaHovered(false)}
+          className="flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white p-3.5 rounded-full shadow-2xl transition-all duration-300 relative hover:scale-105 h-[50px] min-w-[50px]"
           id="persistent-wa-assist"
-          title="Konsultasi WA Kios"
         >
           {/* Pulse Ripple Effect behind */}
           <span className="absolute inset-0 bg-[#25D366]/30 rounded-full -z-10 animate-ping"></span>
-          <Phone className="h-5.5 w-5.5 stroke-[2.2] text-white" />
-          <span className="max-w-0 overflow-hidden group-hover:max-w-[150px] transition-all duration-500 text-[11px] font-black uppercase tracking-wider block whitespace-nowrap leading-none pl-0 group-hover:pl-1.5 text-white">
-            Konsultasi Kios
-          </span>
+          <Phone className="h-5.5 w-5.5 stroke-[2.2] text-white shrink-0" />
+          <AnimatePresence initial={false}>
+            {isWaHovered && (
+              <motion.span
+                initial={{ width: 0, opacity: 0, marginLeft: 0 }}
+                animate={{ width: "auto", opacity: 1, marginLeft: 8 }}
+                exit={{ width: 0, opacity: 0, marginLeft: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden text-[11px] font-black uppercase tracking-wider block whitespace-nowrap leading-none text-white"
+              >
+                Konsultasi Kios
+              </motion.span>
+            )}
+          </AnimatePresence>
         </a>
       </motion.div>
 
@@ -400,7 +424,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-22 right-7.5 bg-white dark:bg-[#1E293B] text-[#0D3B20] dark:text-[#70A83B] border border-[#0D3B20]/15 dark:border-white/5 p-2.5 rounded-full shadow-lg z-30 transition hover:bg-[#0D3B20]/10 dark:hover:bg-slate-800 cursor-pointer"
+            className="fixed bottom-22 right-7.5 bg-white dark:bg-[#1E293B] text-[#11341C] dark:text-[#8FC14E] border border-[#11341C]/15 dark:border-white/5 p-2.5 rounded-full shadow-lg z-30 transition hover:bg-[#11341C]/10 dark:hover:bg-slate-800 cursor-pointer"
             title="Kembali ke Puncak"
           >
             <ChevronUp className="h-4.5 w-4.5 stroke-[2.5]" />

@@ -30,7 +30,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-white dark:bg-[#0F172A] scroll-mt-10 overflow-hidden relative">
       {/* Visual background lines */}
-      <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-[#70A83B]/3 dark:bg-[#70A83B]/2 rounded-full filter blur-[100px] -z-10"></div>
+      <div className="absolute right-0 bottom-0 w-[400px] h-[400px] bg-[#8FC14E]/3 dark:bg-[#8FC14E]/2 rounded-full filter blur-[100px] -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -45,7 +45,7 @@ export default function About() {
             className="lg:col-span-5 space-y-6"
           >
             {/* Visual Frame */}
-            <div className="relative rounded-[40px] overflow-hidden bg-neutral-150 dark:bg-slate-800 aspect-[4/5] shadow-2xl group border border-[#0D3B20]/10 dark:border-white/5">
+            <div className="relative rounded-[40px] overflow-hidden bg-neutral-150 dark:bg-slate-800 aspect-[4/5] shadow-2xl group border border-[#11341C]/10 dark:border-white/5">
               <img
                 src="/about-store.png"
                 alt="Toko pupuk Parengan Tuban - Kios Pupuk Tani Makmur"
@@ -56,7 +56,7 @@ export default function About() {
               
               {/* Overlay Glass Badge representing local address */}
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-[#1E293B]/95 backdrop-blur-md p-5 rounded-3xl border border-white/20 dark:border-white/5 shadow-xl">
-                <span className="text-[9px] bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A] font-black px-2.5 py-1 rounded-md uppercase tracking-wider block w-fit mb-1.5">
+                <span className="text-[9px] bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A] font-black px-2.5 py-1 rounded-md uppercase tracking-wider block w-fit mb-1.5">
                   LOKASI UTAMA
                 </span>
                 <p className="text-xs font-black text-[#263238] dark:text-[#F8FAFC] font-heading leading-tight">{businessInfo.address}</p>
@@ -68,7 +68,7 @@ export default function About() {
           <div className="lg:col-span-7 space-y-8">
             
             <div>
-              <span className="text-[#0D3B20] bg-[#0D3B20]/8 border border-[#0D3B20]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block mb-4 font-heading dark:text-[#70A83B] dark:bg-[#70A83B]/8 dark:border-[#70A83B]/15">
+              <span className="text-[#11341C] bg-[#11341C]/8 border border-[#11341C]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block mb-4 font-heading dark:text-[#8FC14E] dark:bg-[#8FC14E]/8 dark:border-[#8FC14E]/15">
                 Profil Pengecer Resmi
               </span>
               
@@ -94,7 +94,7 @@ export default function About() {
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     className="flex space-x-4 items-start"
                   >
-                    <div className="bg-[#0D3B20]/8 border border-[#0D3B20]/15 dark:bg-[#70A83B]/10 dark:border-[#70A83B]/15 p-3 rounded-2xl text-[#0D3B20] dark:text-[#70A83B] shrink-0">
+                    <div className="bg-[#11341C]/8 border border-[#11341C]/15 dark:bg-[#8FC14E]/10 dark:border-[#8FC14E]/15 p-3 rounded-2xl text-[#11341C] dark:text-[#8FC14E] shrink-0">
                       <Icon className="h-5.5 w-5.5 stroke-[2.2]" />
                     </div>
                     <div>

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { faqItems } from "../data/storeData";
-import { ChevronDown, HelpCircle, ArrowRight, Search, Phone } from "lucide-react";
+import { ChevronDown, HelpCircle, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function FAQ() {
@@ -21,7 +21,7 @@ export default function FAQ() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="text-[#0D3B20] bg-[#0D3B20]/8 border border-[#0D3B20]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block font-heading dark:text-[#70A83B] dark:bg-[#70A83B]/8 dark:border-[#70A83B]/15">
+          <span className="text-[#11341C] bg-[#11341C]/8 border border-[#11341C]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block font-heading dark:text-[#8FC14E] dark:bg-[#8FC14E]/8 dark:border-[#8FC14E]/15">
             Pusat Bantuan & e-RDKK
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#263238] dark:text-[#F8FAFC] tracking-tight font-heading leading-none">
@@ -36,9 +36,24 @@ export default function FAQ() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
           {/* Left Column (Callout - 5 cols) */}
-          <div className="lg:col-span-5 bg-[#F8FAF5] dark:bg-[#1E293B] rounded-[32px] p-8 border border-neutral-150 dark:border-white/5 space-y-8 flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-[#F8FAF5] dark:bg-[#1E293B] rounded-[32px] p-8 border border-neutral-150 dark:border-white/5 space-y-5 flex flex-col h-fit">
+            
+            {/* Contextual Illustration Image at the Top */}
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-neutral-200 dark:border-white/5 shadow-sm group">
+              <img
+                src="/hero-bg-farmer.jpg"
+                alt="Konsultasi Petani - Kios Pupuk Tani Makmur Parengan Tuban"
+                className="w-full h-full object-cover transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                style={{ willChange: "transform" }}
+                loading="lazy"
+                width={480}
+                height={360}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"></div>
+            </div>
+
             <div className="space-y-4">
-              <span className="text-[9px] bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A] px-2.5 py-1.5 rounded-lg font-black uppercase tracking-widest font-heading block w-fit">
+              <span className="text-[9px] bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A] px-2.5 py-1.5 rounded-lg font-black uppercase tracking-widest font-heading block w-fit">
                 Layanan Tanya Cepat
               </span>
               
@@ -52,7 +67,7 @@ export default function FAQ() {
             </div>
 
             <div className="bg-white dark:bg-[#0F172A] p-5 rounded-2xl border border-neutral-150 dark:border-slate-800 space-y-3.5 shadow-sm">
-              <div className="flex items-center space-x-3 text-[#0D3B20] dark:text-[#70A83B]">
+              <div className="flex items-center space-x-3 text-[#11341C] dark:text-[#8FC14E]">
                 <HelpCircle className="h-5.5 w-5.5 stroke-[2.2]" />
                 <span className="text-[10px] font-black uppercase tracking-wider text-[#263238] dark:text-[#F8FAFC]">Konsultasi Online</span>
               </div>
@@ -65,7 +80,7 @@ export default function FAQ() {
                 href="https://wa.me/6281359839918"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-[#0D3B20] dark:bg-[#70A83B] hover:bg-[#1B5E20] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3 rounded-xl text-[10px] font-black uppercase tracking-widest text-center flex justify-center items-center space-x-2 transition shadow-md shadow-[#0D3B20]/10"
+                className="w-full bg-[#11341C] dark:bg-[#8FC14E] hover:bg-[#1B5E20] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3 rounded-xl text-[10px] font-black uppercase tracking-widest text-center flex justify-center items-center space-x-2 transition shadow-md shadow-[#11341C]/10"
               >
                 <Phone className="h-4 w-4" />
                 <span>Konsul Cek e-RDKK</span>
@@ -88,7 +103,7 @@ export default function FAQ() {
                     className="w-full text-left py-5 px-6.5 flex justify-between items-center transition cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-slate-800/50"
                   >
                     <div className="space-y-1 pr-4">
-                      <span className="text-[9px] text-[#0D3B20] dark:text-[#70A83B] font-black uppercase tracking-widest block font-heading">
+                      <span className="text-[9px] text-[#11341C] dark:text-[#8FC14E] font-black uppercase tracking-widest block font-heading">
                         {item.category}
                       </span>
                       <h4 className="font-heading font-black text-xs sm:text-sm text-[#263238] dark:text-[#F8FAFC]">
@@ -97,7 +112,7 @@ export default function FAQ() {
                     </div>
                     
                     <span className={`bg-neutral-100 dark:bg-slate-850 hover:bg-neutral-200 dark:hover:bg-slate-800 p-1.5 rounded-full text-neutral-500 dark:text-slate-400 transition-transform duration-300 transform ${
-                      isOpen ? "rotate-185 bg-emerald-50 dark:bg-emerald-950/40 text-[#0D3B20] dark:text-[#70A83B]" : ""
+                      isOpen ? "rotate-185 bg-emerald-50 dark:bg-emerald-950/40 text-[#11341C] dark:text-[#8FC14E]" : ""
                     }`}>
                       <ChevronDown className="h-4.5 w-4.5" />
                     </span>

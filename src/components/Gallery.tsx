@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { galleryItems } from "../data/storeData";
 import { GalleryItem } from "../types";
-import { Eye, Image, X, Calendar, Focus } from "lucide-react";
+import { X, Calendar, Focus } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Gallery() {
@@ -31,7 +31,7 @@ export default function Gallery() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="text-[#0D3B20] bg-[#0D3B20]/8 border border-[#0D3B20]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block font-heading dark:text-[#70A83B] dark:bg-[#70A83B]/8 dark:border-[#70A83B]/15">
+          <span className="text-[#11341C] bg-[#11341C]/8 border border-[#11341C]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block font-heading dark:text-[#8FC14E] dark:bg-[#8FC14E]/8 dark:border-[#8FC14E]/15">
             Dokumentasi Kios Tani
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-[#263238] dark:text-[#F8FAFC] tracking-tight font-heading leading-none">
@@ -52,7 +52,7 @@ export default function Gallery() {
                 onClick={() => setSelectedCat(t.id)}
                 className={`px-5 py-3 rounded-xl text-[10px] font-black uppercase tracking-wider block shrink-0 cursor-pointer ${
                   isActive
-                    ? "bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A] shadow-md shadow-[#0D3B20]/10 dark:shadow-none"
+                    ? "bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A] shadow-md shadow-[#11341C]/10 dark:shadow-none"
                     : "bg-[#F8FAF5] dark:bg-[#1E293B] border border-neutral-150 dark:border-white/5 text-[#263238] dark:text-[#F8FAFC] hover:bg-neutral-50 dark:hover:bg-slate-800"
                 }`}
               >
@@ -102,7 +102,7 @@ export default function Gallery() {
 
                 {/* Desc summary details */}
                 <div className="p-6 space-y-2.5">
-                  <div className="flex items-center space-x-2 text-[9px] font-black text-[#0D3B20] dark:text-[#70A83B] uppercase tracking-widest font-heading">
+                  <div className="flex items-center space-x-2 text-[9px] font-black text-[#11341C] dark:text-[#8FC14E] uppercase tracking-widest font-heading">
                     <Calendar className="h-3.5 w-3.5" />
                     <span>Kegiatan Teritorial 2026</span>
                   </div>
@@ -163,7 +163,7 @@ export default function Gallery() {
                 </div>
                 
                 <div className="px-3 pb-3 text-white space-y-1.5">
-                  <span className="text-[9px] bg-emerald-500/10 text-[#70A83B] px-2.5 py-1 rounded-md font-black uppercase tracking-widest font-heading mb-1 display-block">
+                  <span className="text-[9px] bg-emerald-500/10 text-[#8FC14E] px-2.5 py-1 rounded-md font-black uppercase tracking-widest font-heading mb-1 display-block">
                     {activePhoto.category}
                   </span>
                   <h4 className="font-heading font-black text-sm text-neutral-100">{activePhoto.title}</h4>

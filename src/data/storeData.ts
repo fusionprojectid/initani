@@ -29,7 +29,7 @@ export const products: Product[] = [
     description: "Pupuk nitrogen murni kadar N 46% produksi resmi PT Pupuk Indonesia. Bekerja sangat cepat mempercepat fotosintesis dan membuat daun padi menjadi rimbun hijau.",
     price: "Rp 2.250 / Kg (HET Resmi)",
     unit: "Sak 50 Kg",
-    image: "/pupuk-placeholder.png",
+    image: "/product-urea.png",
     isSubsidy: true,
     category: "pupuk",
     benefits: [
@@ -45,7 +45,7 @@ export const products: Product[] = [
     description: "Pupuk majemuk seimbang penugasan resmi subsidi mengandung Nitrogen, Fosfat, dan Kalium untuk memicu kerapatan malai padi dan mencegah bulir hampa.",
     price: "Rp 2.300 / Kg (HET Resmi)",
     unit: "Sak 50 Kg",
-    image: "/pupuk-placeholder.png",
+    image: "/product-phonska.png",
     isSubsidy: true,
     category: "pupuk",
     benefits: [
@@ -61,7 +61,7 @@ export const products: Product[] = [
     description: "Pupuk organik berbentuk granul produksi Petrokimia Gresik berdaya guna tinggi dalam memperbaiki struktur fisik, kimia, dan biologi tanah sawah yang jenuh.",
     price: "Rp 800 / Kg (HET Resmi)",
     unit: "Sak 40 Kg",
-    image: "/pupuk-placeholder.png",
+    image: "/product-petroganik.png",
     isSubsidy: true,
     category: "pupuk",
     benefits: [
@@ -77,7 +77,7 @@ export const products: Product[] = [
     description: "Pupuk ZA non-subsidi andalan penyedia unsur hara Nitrogen 21% dan Sulfur (Belerang) 24% sangat jernih untuk meningkatkan kualitas rasa pada jagung dan melon.",
     price: "Rp 180.000 / Sak",
     unit: "Sak 50 Kg",
-    image: "/pupuk-placeholder.png",
+    image: "/product-za.png",
     isSubsidy: false,
     category: "pupuk",
     benefits: [
@@ -93,7 +93,7 @@ export const products: Product[] = [
     description: "Pupuk SP-36 non-subsidi padat berbentuk granul abu-abu kaya akan hara Fosfor (P2O5) larut air 36% yang berguna memicu percabangan akar baru.",
     price: "Rp 310.000 / Sak",
     unit: "Sak 50 Kg",
-    image: "/pupuk-placeholder.png",
+    image: "/product-sp36.png",
     isSubsidy: false,
     category: "pupuk",
     benefits: [
@@ -109,7 +109,7 @@ export const products: Product[] = [
     description: "Pupuk KCL merah kristal impor berkualitas nomor satu bersumber dari Kanada dengan kadar Kalium (K2O) 60% guna memaksimalkan hasil bobot gabah.",
     price: "Rp 435.000 / Sak",
     unit: "Sak 50 Kg",
-    image: "/pupuk-placeholder.png",
+    image: "/product-kcl.png",
     isSubsidy: false,
     category: "pupuk",
     benefits: [
@@ -125,7 +125,7 @@ export const products: Product[] = [
     description: "Insektisida sistemik spektrum luas andalan untuk melumpuhkan ulat grayak (Spodoptera frugiperda), pengerek batang padi (sundep), dan lalat daun secara tuntas.",
     price: "Rp 125.000 / Botol",
     unit: "Botol 250 ML",
-    image: "/pestisida-placeholder.png",
+    image: "/product-prevathon.png",
     isSubsidy: false,
     category: "pestisida",
     benefits: [
@@ -141,7 +141,7 @@ export const products: Product[] = [
     description: "Herbisida sistemik purna tumbuh bersifat selektif penuntasan gulma berdaun lebar and teki-tekian di sela baris tanaman padi sawah.",
     price: "Rp 90.000 / Botol",
     unit: "Botol 400 ML",
-    image: "/pestisida-placeholder.png",
+    image: "/product-lindomin.png",
     isSubsidy: false,
     category: "pestisida",
     benefits: [
@@ -157,7 +157,7 @@ export const products: Product[] = [
     description: "Fungisida kontak multiguna berbentuk tepung kuning yang dapat disuspensikan untuk melindungi tanaman hortikultura dari penyakit bercak daun jamur.",
     price: "Rp 75.000 / Pack",
     unit: "Pack 500 Gram",
-    image: "/pestisida-placeholder.png",
+    image: "/product-antracol.png",
     isSubsidy: false,
     category: "pestisida",
     benefits: [
@@ -173,7 +173,7 @@ export const products: Product[] = [
     description: "Benih jagung hibrida berskala komersial tinggi lulus sertifikasi ketat kementerian pertanian. Tahan kemarau keras, kebal karat daun, dan bonggol merah berbobot berat.",
     price: "Rp 145.000 / Kg",
     unit: "Kantong 1 Kg",
-    image: "/benih-placeholder.png",
+    image: "/product-pioneer.png",
     isSubsidy: false,
     category: "benih",
     benefits: [
@@ -324,5 +324,19 @@ export const galleryItems: GalleryItem[] = [
     description: "Brand mark resmi Kios Pupuk Tani Makmur Parengan Kabupaten Tuban - Jawa Timur.",
     image: "/logo.png",
     category: "mitra"
+  },
+  {
+    id: "g5",
+    title: "Bongkar Muat Pupuk Urea Subsidi",
+    description: "Proses pemindahan pupuk Urea bersubsidi dari truk armada pengiriman ke dalam area penyimpanan gudang.",
+    image: "/gallery-gudang-1.jpg",
+    category: "kegiatan"
+  },
+  {
+    id: "g6",
+    title: "Stok Masuk Pupuk NPK Phonska",
+    description: "Petugas melakukan pemeriksaan dan verifikasi kualitas karung pupuk NPK Phonska yang baru tiba di gudang.",
+    image: "/gallery-gudang-2.jpg",
+    category: "produk"
   }
 ];

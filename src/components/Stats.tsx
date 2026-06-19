@@ -15,7 +15,7 @@ export default function Stats() {
       label: "Pelanggan Aktif",
       desc: "Petani & Gapoktan yang mempercayakan kebutuhan sawahnya kepada kami.",
       icon: Users,
-      color: "from-[#0D3B20]/10 to-[#70A83B]/5"
+      color: "from-[#11341C]/10 to-[#8FC14E]/5"
     },
     {
       id: "stat-2",
@@ -31,7 +31,7 @@ export default function Stats() {
       label: "Tahun Mengabdi",
       desc: "Konsisten mendampingi dan menyediakan sarana pertanian di Tuban sejak tahun 2014.",
       icon: Calendar,
-      color: "from-[#0D3B20]/10 to-emerald-500/5"
+      color: "from-[#11341C]/10 to-emerald-500/5"
     },
     {
       id: "stat-4",
@@ -46,7 +46,7 @@ export default function Stats() {
   return (
     <section className="py-20 bg-emerald-950 dark:bg-[#0A0F1D] text-white relative overflow-hidden border-y border-transparent dark:border-slate-800/50">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#70A83B]/10 dark:bg-[#70A83B]/5 rounded-full filter blur-3xl -translate-y-24 translate-x-24 -z-10 animate-pulse"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#8FC14E]/10 dark:bg-[#8FC14E]/5 rounded-full filter blur-3xl -translate-y-24 translate-x-24 -z-10 animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#FFB300]/5 dark:bg-[#FBBF24]/2 rounded-full filter blur-3xl translate-y-24 -translate-x-24 -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,16 +64,16 @@ export default function Stats() {
                 id={stat.id}
               >
                 <div className="flex justify-between items-start mb-4">
-                  <div className="p-3 bg-white/10 rounded-2xl text-[#70A83B] dark:text-[#70A83B] group-hover:scale-110 transition-transform">
+                  <div className="p-3 bg-white/10 rounded-2xl text-[#8FC14E] dark:text-[#8FC14E] group-hover:scale-110 transition-transform">
                     <Icon className="h-6 w-6" />
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-3xl sm:text-4xl font-black font-heading tracking-tight text-white group-hover:text-[#70A83B] dark:group-hover:text-[#70A83B] transition-colors">
+                  <h3 className="text-3xl sm:text-4xl font-black font-heading tracking-tight text-white group-hover:text-[#8FC14E] dark:group-hover:text-[#8FC14E] transition-colors">
                     {stat.number}
                   </h3>
-                  <p className="text-xs font-black uppercase tracking-widest text-[#70A83B] dark:text-[#70A83B] font-heading pt-1">
+                  <p className="text-xs font-black uppercase tracking-widest text-[#8FC14E] dark:text-[#8FC14E] font-heading pt-1">
                     {stat.label}
                   </p>
                   <p className="text-[11px] text-neutral-300 dark:text-slate-350 leading-relaxed pt-2">

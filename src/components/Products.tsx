@@ -3,19 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { products, categories, businessInfo } from "../data/storeData";
 import { Product, CartItem } from "../types";
 import { 
   ShoppingBag, 
   Search, 
-  Tag, 
   Check, 
   PhoneCall, 
   Eye, 
   X, 
-  Sparkles, 
-  CheckSquare, 
   AlertTriangle 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -39,6 +36,16 @@ export default function Products() {
       return matchCat && matchSearch;
     });
   }, [selectedCategory, searchQuery]);
+
+  // Repeat the array so we have at least 8 elements, then double it for the seamless marquee
+  const repeatedProducts = useMemo(() => {
+    if (filteredProducts.length === 0) return [];
+    let list = [...filteredProducts];
+    while (list.length < 8) {
+      list = [...list, ...filteredProducts];
+    }
+    return list;
+  }, [filteredProducts]);
 
   // Cart helper actions
   const addToCart = (product: Product) => {
@@ -103,33 +110,42 @@ export default function Products() {
     <section id="products" className="py-24 bg-[#F8FAF5] dark:bg-[#0F172A] scroll-mt-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <span className="text-[#0D3B20] bg-[#0D3B20]/8 border border-[#0D3B20]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest inline-block mb-4 font-heading dark:text-[#70A83B] dark:bg-[#70A83B]/8 dark:border-[#70A83B]/15">
-              Gudang Sarana Produksi Tani
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#263238] dark:text-[#F8FAFC] tracking-tight font-heading leading-tight">
-              Eceran Resmi Pupuk & Benih
-            </h2>
-            <p className="text-xs sm:text-sm text-neutral-500 dark:text-[#CBD5E1] mt-2 font-medium max-w-xl">
-              Harga padi sawah, pupuk bersubsidi, pembasmi ulat palawija tertera jujur sesuai Surat Keputusan Bupati dan kementerian pertanian RI.
-            </p>
+        {/* Section Header (Static Banner) */}
+        <div className="flex flex-col gap-6 mb-12">
+          
+          {/* Static Styled Banner */}
+          <div className="relative w-full py-5 bg-neutral-50/50 dark:bg-slate-900/30 backdrop-blur-sm rounded-2xl px-6 sm:px-8">
+            <div className="flex flex-col gap-3">
+              <span className="self-start text-[#11341C] bg-[#11341C]/8 border border-[#11341C]/15 px-5 py-2 rounded-full text-[10.5px] font-black uppercase tracking-widest font-heading dark:text-[#8FC14E] dark:bg-[#8FC14E]/8 dark:border-[#8FC14E]/15 shrink-0">
+                Gudang Sarana Produksi Tani
+              </span>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-[#263238] dark:text-[#F8FAFC] tracking-tight font-heading leading-tight">
+                Eceran Resmi Pupuk & Benih
+              </h2>
+            </div>
           </div>
 
-          {/* Combined Search bar */}
-          <div className="relative w-full md:max-w-xs shrink-0">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-neutral-400">
-              <Search className="h-4.5 w-4.5" />
-            </span>
-            <input
-              type="text"
-              placeholder="Cari bibit, urea, fungsida..."
-              className="w-full bg-white dark:bg-[#1E293B] border border-neutral-200 dark:border-slate-800 focus:border-[#0D3B20] dark:focus:border-[#70A83B] focus:ring-1 focus:ring-[#0D3B20] dark:focus:ring-[#70A83B] rounded-2xl py-3.5 pl-11 pr-5 text-xs font-semibold focus:outline-none shadow-sm placeholder:text-neutral-400 dark:placeholder:text-slate-500 text-[#263238] dark:text-[#F8FAFC]"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+          {/* Subtext and Search Row */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <p className="text-xs sm:text-sm text-neutral-550 dark:text-[#CBD5E1] font-semibold max-w-xl">
+              Harga padi sawah, pupuk bersubsidi, pembasmi ulat palawija tertera jujur sesuai Surat Keputusan Bupati dan kementerian pertanian RI.
+            </p>
+            
+            {/* Combined Search bar */}
+            <div className="relative w-full md:max-w-xs shrink-0">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-neutral-400">
+                <Search className="h-4.5 w-4.5" />
+              </span>
+              <input
+                type="text"
+                placeholder="Cari bibit, urea, fungsida..."
+                className="w-full bg-white dark:bg-[#1E293B] border border-neutral-200 dark:border-slate-800 focus:border-[#11341C] dark:focus:border-[#8FC14E] focus:ring-1 focus:ring-[#11341C] dark:focus:ring-[#8FC14E] rounded-2xl py-3.5 pl-11 pr-5 text-xs font-semibold focus:outline-none shadow-sm placeholder:text-neutral-400 dark:placeholder:text-slate-500 text-[#263238] dark:text-[#F8FAFC]"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
           </div>
+
         </div>
 
         {/* Category sliding badges selectors */}
@@ -138,7 +154,7 @@ export default function Products() {
             onClick={() => setSelectedCategory("all")}
             className={`px-5.5 py-3 rounded-xl text-[10.5px] font-black uppercase tracking-wider block shrink-0 cursor-pointer ${
               selectedCategory === "all"
-                ? "bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A] shadow-md shadow-[#0D3B20]/10"
+                ? "bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A] shadow-md shadow-[#11341C]/10"
                 : "bg-white dark:bg-[#1E293B] border border-neutral-200 dark:border-slate-800 text-[#263238] dark:text-[#F8FAFC] hover:bg-neutral-50 dark:hover:bg-slate-800"
             }`}
           >
@@ -153,7 +169,7 @@ export default function Products() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-5.5 py-3 rounded-xl text-[10.5px] font-black uppercase tracking-wider block shrink-0 cursor-pointer ${
                   selectedCategory === cat.id
-                    ? "bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A] shadow-md shadow-[#0D3B20]/10"
+                    ? "bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A] shadow-md shadow-[#11341C]/10"
                     : "bg-white dark:bg-[#1E293B] border border-neutral-200 dark:border-slate-800 text-[#263238] dark:text-[#F8FAFC] hover:bg-neutral-50 dark:hover:bg-slate-800"
                 }`}
               >
@@ -163,7 +179,7 @@ export default function Products() {
           })}
         </div>
 
-        {/* Grid Lists layout */}
+        {/* Slideshow walking/running layout */}
         {filteredProducts.length === 0 ? (
           <div className="bg-white dark:bg-[#1E293B] border border-neutral-150 dark:border-slate-800 py-16 px-6 rounded-3xl text-center space-y-4">
             <div className="inline-flex bg-amber-50 dark:bg-amber-955 rounded-2xl p-4 text-amber-500 dark:text-amber-400">
@@ -175,86 +191,174 @@ export default function Products() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredProducts.map((p) => (
-              <motion.div
-                key={p.id}
-                layout
-                className="bg-white dark:bg-[#1E293B] rounded-3xl overflow-hidden border border-neutral-200/60 dark:border-white/5 shadow-md group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                
-                {/* Visual Image area */}
-                <div className="relative aspect-square overflow-hidden bg-neutral-100 dark:bg-slate-900 border-b border-neutral-100 dark:border-slate-800">
-                  <img
-                    src={p.image}
-                    alt={
-                      p.name.includes("Urea") 
-                        ? `${p.name} - Pupuk Urea Tuban, Kios Pupuk Tani Makmur Parengan Tuban`
-                        : p.name.includes("NPK") || p.name.includes("Phonska")
-                        ? `${p.name} - Pupuk NPK Parengan, Toko pupuk Parengan Tuban`
-                        : `${p.name} - Supplier pupuk Tuban, Sarana pertanian Parengan`
-                    }
-                    className="w-full h-full object-cover transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-108"
-                    style={{ willChange: "transform" }}
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  
-                  {/* Subsidi Over Badge overlay */}
-                  <span className={`absolute top-4.5 left-4.5 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-sm ${
-                    p.isSubsidy 
-                      ? "bg-amber-500 text-white" 
-                      : "bg-[#0D3B20] dark:bg-[#70A83B] text-white dark:text-[#0F172A]"
-                  }`}>
-                    {p.isSubsidy ? "SUBSIDI NEGARA" : "PREMIUM BEBAS"}
-                  </span>
-                </div>
+          <div className="relative w-full overflow-hidden py-4 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+            {/* Left and Right Fade Overlays for Premium Look */}
+            <div className="absolute top-0 left-0 h-full w-8 sm:w-20 bg-gradient-to-r from-[#F8FAF5] to-transparent dark:from-[#0F172A] z-10 pointer-events-none" />
+            <div className="absolute top-0 right-0 h-full w-8 sm:w-20 bg-gradient-to-l from-[#F8FAF5] to-transparent dark:from-[#0F172A] z-10 pointer-events-none" />
 
-                {/* Content description wrapper */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] text-neutral-400 dark:text-slate-400 font-bold uppercase tracking-wider block">
-                      {p.category.toUpperCase()} • {p.unit}
-                    </span>
-                    <h3 className="font-heading font-black text-sm text-[#263238] dark:text-[#F8FAFC] group-hover:text-[#0D3B20] dark:group-hover:text-[#70A83B] transition leading-none">
-                      {p.name}
-                    </h3>
-                    <p className="text-[11.5px] text-neutral-500 dark:text-[#CBD5E1] font-medium leading-relaxed font-sans line-clamp-2">
-                      {p.description}
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 pt-3 border-t border-neutral-100 dark:border-slate-800">
-                    {/* Price tag block */}
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-black text-neutral-400 dark:text-slate-400 uppercase tracking-wider">HET/Harga</span>
-                      <span className="font-heading font-black text-sm text-[#0D3B20] dark:text-[#70A83B]">{p.price}</span>
-                    </div>
-
-                    {/* Quick interactive buttons */}
-                    <div className="grid grid-cols-5 gap-2.5">
-                      <button
-                        onClick={() => setActivePreviewProduct(p)}
-                        className="col-span-2 bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 py-3 rounded-xl transition flex justify-center items-center text-neutral-500 dark:text-slate-450 hover:text-neutral-750 cursor-pointer"
-                        title="Detail Manfaat & Penggunaan"
-                      >
-                        <Eye className="h-4 w-4" />
-                      </button>
+            <div className="flex w-max animate-marquee hover:[animation-play-state:paused] py-4">
+              {/* Group 1 */}
+              <div className="flex pr-6 gap-6 shrink-0">
+                {repeatedProducts.map((p, idx) => (
+                  <motion.div
+                    key={`${p.id}-g1-${idx}`}
+                    layout
+                    className="w-[280px] sm:w-[325px] shrink-0 bg-white dark:bg-[#1E293B] rounded-3xl overflow-hidden border border-neutral-200/60 dark:border-white/5 shadow-md group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                  >
+                    {/* Visual Image area */}
+                    <div className="relative aspect-square overflow-hidden bg-neutral-100 dark:bg-slate-900 border-b border-neutral-100 dark:border-slate-800">
+                      <img
+                        src={p.image}
+                        alt={
+                          p.name.includes("Urea") 
+                            ? `${p.name} - Pupuk Urea Tuban, Kios Pupuk Tani Makmur Parengan Tuban`
+                            : p.name.includes("NPK") || p.name.includes("Phonska")
+                            ? `${p.name} - Pupuk NPK Parengan, Toko pupuk Parengan Tuban`
+                            : `${p.name} - Supplier pupuk Tuban, Sarana pertanian Parengan`
+                        }
+                        className="w-full h-full object-cover transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-108"
+                        style={{ willChange: "transform" }}
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
                       
-                      <button
-                        onClick={() => addToCart(p)}
-                        className="col-span-3 bg-[#0D3B20] hover:bg-[#1B5E20] dark:bg-[#70A83B] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition flex items-center justify-center space-x-1 shadow-md shadow-[#0D3B20]/10 dark:shadow-none cursor-pointer"
-                      >
-                        <ShoppingBag className="h-3.5 w-3.5" />
-                        <span>Pesan</span>
-                      </button>
+                      {/* Subsidi Over Badge overlay */}
+                      <span className={`absolute top-4.5 left-4.5 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-sm ${
+                        p.isSubsidy 
+                          ? "bg-amber-500 text-white" 
+                          : "bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A]"
+                      }`}>
+                        {p.isSubsidy ? "SUBSIDI NEGARA" : "PREMIUM BEBAS"}
+                      </span>
                     </div>
 
-                  </div>
-                </div>
+                    {/* Content description wrapper */}
+                    <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                      <div className="space-y-1.5">
+                        <span className="text-[10px] text-neutral-400 dark:text-slate-400 font-bold uppercase tracking-wider block">
+                          {p.category.toUpperCase()} • {p.unit}
+                        </span>
+                        <h3 className="font-heading font-black text-sm text-[#263238] dark:text-[#F8FAFC] group-hover:text-[#11341C] dark:group-hover:text-[#8FC14E] transition leading-none">
+                          {p.name}
+                        </h3>
+                        <p className="text-[11.5px] text-neutral-500 dark:text-[#CBD5E1] font-medium leading-relaxed font-sans line-clamp-2">
+                          {p.description}
+                        </p>
+                      </div>
 
-              </motion.div>
-            ))}
+                      <div className="space-y-3 pt-3 border-t border-neutral-100 dark:border-slate-800">
+                        {/* Price tag block */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-black text-neutral-405 dark:text-slate-400 uppercase tracking-wider">HET/Harga</span>
+                          <span className="font-heading font-black text-sm text-[#11341C] dark:text-[#8FC14E]">{p.price}</span>
+                        </div>
+
+                        {/* Quick interactive buttons */}
+                        <div className="grid grid-cols-5 gap-2.5">
+                          <button
+                            onClick={() => setActivePreviewProduct(p)}
+                            className="col-span-2 bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 py-3 rounded-xl transition flex justify-center items-center text-neutral-500 dark:text-slate-450 hover:text-neutral-750 cursor-pointer"
+                            title="Detail Manfaat & Penggunaan"
+                          >
+                            <Eye className="h-4 w-4" />
+                          </button>
+                          
+                          <button
+                            onClick={() => addToCart(p)}
+                            className="col-span-3 bg-[#11341C] hover:bg-[#1B5E20] dark:bg-[#8FC14E] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition flex items-center justify-center space-x-1 shadow-md shadow-[#11341C]/10 dark:shadow-none cursor-pointer"
+                          >
+                            <ShoppingBag className="h-3.5 w-3.5" />
+                            <span>Pesan</span>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Group 2 */}
+              <div className="flex pr-6 gap-6 shrink-0">
+                {repeatedProducts.map((p, idx) => (
+                  <motion.div
+                    key={`${p.id}-g2-${idx}`}
+                    layout
+                    className="w-[280px] sm:w-[325px] shrink-0 bg-white dark:bg-[#1E293B] rounded-3xl overflow-hidden border border-neutral-200/60 dark:border-white/5 shadow-md group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                  >
+                    {/* Visual Image area */}
+                    <div className="relative aspect-square overflow-hidden bg-neutral-100 dark:bg-slate-900 border-b border-neutral-100 dark:border-slate-800">
+                      <img
+                        src={p.image}
+                        alt={
+                          p.name.includes("Urea") 
+                            ? `${p.name} - Pupuk Urea Tuban, Kios Pupuk Tani Makmur Parengan Tuban`
+                            : p.name.includes("NPK") || p.name.includes("Phonska")
+                            ? `${p.name} - Pupuk NPK Parengan, Toko pupuk Parengan Tuban`
+                            : `${p.name} - Supplier pupuk Tuban, Sarana pertanian Parengan`
+                        }
+                        className="w-full h-full object-cover transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-108"
+                        style={{ willChange: "transform" }}
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
+                      
+                      {/* Subsidi Over Badge overlay */}
+                      <span className={`absolute top-4.5 left-4.5 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-sm ${
+                        p.isSubsidy 
+                          ? "bg-amber-500 text-white" 
+                          : "bg-[#11341C] dark:bg-[#8FC14E] text-white dark:text-[#0F172A]"
+                      }`}>
+                        {p.isSubsidy ? "SUBSIDI NEGARA" : "PREMIUM BEBAS"}
+                      </span>
+                    </div>
+
+                    {/* Content description wrapper */}
+                    <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                      <div className="space-y-1.5">
+                        <span className="text-[10px] text-neutral-400 dark:text-slate-400 font-bold uppercase tracking-wider block">
+                          {p.category.toUpperCase()} • {p.unit}
+                        </span>
+                        <h3 className="font-heading font-black text-sm text-[#263238] dark:text-[#F8FAFC] group-hover:text-[#11341C] dark:group-hover:text-[#8FC14E] transition leading-none">
+                          {p.name}
+                        </h3>
+                        <p className="text-[11.5px] text-neutral-500 dark:text-[#CBD5E1] font-medium leading-relaxed font-sans line-clamp-2">
+                          {p.description}
+                        </p>
+                      </div>
+
+                      <div className="space-y-3 pt-3 border-t border-neutral-100 dark:border-slate-800">
+                        {/* Price tag block */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-black text-neutral-405 dark:text-slate-400 uppercase tracking-wider">HET/Harga</span>
+                          <span className="font-heading font-black text-sm text-[#11341C] dark:text-[#8FC14E]">{p.price}</span>
+                        </div>
+
+                        {/* Quick interactive buttons */}
+                        <div className="grid grid-cols-5 gap-2.5">
+                          <button
+                            onClick={() => setActivePreviewProduct(p)}
+                            className="col-span-2 bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 py-3 rounded-xl transition flex justify-center items-center text-neutral-500 dark:text-slate-450 hover:text-neutral-750 cursor-pointer"
+                            title="Detail Manfaat & Penggunaan"
+                          >
+                            <Eye className="h-4 w-4" />
+                          </button>
+                          
+                          <button
+                            onClick={() => addToCart(p)}
+                            className="col-span-3 bg-[#11341C] hover:bg-[#1B5E20] dark:bg-[#8FC14E] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition flex items-center justify-center space-x-1 shadow-md shadow-[#11341C]/10 dark:shadow-none cursor-pointer"
+                          >
+                            <ShoppingBag className="h-3.5 w-3.5" />
+                            <span>Pesan</span>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
 
@@ -300,7 +404,7 @@ export default function Products() {
                     />
                   </div>
                   <div>
-                    <span className="text-[10px] text-[#0D3B20] dark:text-[#70A83B] bg-[#0D3B20]/8 dark:bg-[#70A83B]/10 px-2.5 py-1 rounded-md font-black uppercase tracking-widest font-heading mb-1 block">
+                    <span className="text-[10px] text-[#11341C] dark:text-[#8FC14E] bg-[#11341C]/8 dark:bg-[#8FC14E]/10 px-2.5 py-1 rounded-md font-black uppercase tracking-widest font-heading mb-1 block">
                       {activePreviewProduct.category}
                     </span>
                     <h3 className="font-heading font-black text-base text-[#263238] dark:text-[#F8FAFC] block">{activePreviewProduct.name}</h3>
@@ -320,7 +424,7 @@ export default function Products() {
                   <ul className="space-y-2">
                     {activePreviewProduct.benefits.map((b, idx) => (
                       <li key={idx} className="flex gap-2.5 items-start text-xs text-neutral-750 dark:text-[#CBD5E1] font-medium">
-                        <Check className="h-4 w-4 text-[#0D3B20] dark:text-[#70A83B] shrink-0 mt-0.5" />
+                        <Check className="h-4 w-4 text-[#11341C] dark:text-[#8FC14E] shrink-0 mt-0.5" />
                         <span>{b}</span>
                       </li>
                     ))}
@@ -328,8 +432,8 @@ export default function Products() {
                 </div>
 
                 {/* Practical guide application dosage */}
-                <div className="space-y-2 bg-[#0D3B20]/5 dark:bg-[#70A83B]/8 p-4.5 rounded-2xl border border-[#0D3B20]/10 dark:border-[#70A83B]/15">
-                  <h4 className="text-[10.5px] font-black text-[#0D3B20] dark:text-[#70A83B] uppercase tracking-wider">Saran Dosis Pengaplikasian</h4>
+                <div className="space-y-2 bg-[#11341C]/5 dark:bg-[#8FC14E]/8 p-4.5 rounded-2xl border border-[#11341C]/10 dark:border-[#8FC14E]/15">
+                  <h4 className="text-[10.5px] font-black text-[#11341C] dark:text-[#8FC14E] uppercase tracking-wider">Saran Dosis Pengaplikasian</h4>
                   <p className="text-[11.5px] text-neutral-650 dark:text-[#CBD5E1] font-medium leading-relaxed font-sans">{activePreviewProduct.usage}</p>
                 </div>
 
@@ -340,7 +444,7 @@ export default function Products() {
                       addToCart(activePreviewProduct);
                       setActivePreviewProduct(null);
                     }}
-                    className="flex-1 bg-[#0D3B20] hover:bg-[#1B5E20] dark:bg-[#70A83B] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-center shadow-lg dark:shadow-none transition cursor-pointer"
+                    className="flex-1 bg-[#11341C] hover:bg-[#1B5E20] dark:bg-[#8FC14E] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-center shadow-lg dark:shadow-none transition cursor-pointer"
                   >
                     Tambahkan ke Pesanan
                   </button>
@@ -362,7 +466,7 @@ export default function Products() {
             <div>
               <div className="flex justify-between items-center pb-4.5 border-b border-neutral-100 dark:border-slate-800">
                 <div className="flex items-center space-x-2">
-                  <ShoppingBag className="h-5 w-5 text-[#0D3B20] dark:text-[#70A83B]" />
+                  <ShoppingBag className="h-5 w-5 text-[#11341C] dark:text-[#8FC14E]" />
                   <h3 className="font-heading font-black text-sm text-[#263238] dark:text-[#F8FAFC] uppercase tracking-wider">Daftar Minat Belanja</h3>
                 </div>
                 <button
@@ -421,7 +525,7 @@ export default function Products() {
               <div className="bg-neutral-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-neutral-100 dark:border-slate-800">
                 <span className="text-[9px] font-black text-neutral-400 dark:text-slate-400 uppercase tracking-widest block mb-1">Informasi Pengiriman</span>
                 <p className="text-[11px] text-neutral-500 dark:text-slate-400 leading-relaxed font-sans">
-                  Total barang: <strong className="text-[#263238] dark:text-[#70A83B] font-black">{cart.reduce((acu, i) => acu + i.quantity, 0)} Pcs</strong>.<br />
+                  Total barang: <strong className="text-[#263238] dark:text-[#8FC14E] font-black">{cart.reduce((acu, i) => acu + i.quantity, 0)} Pcs</strong>.<br />
                   Data belanja akan otomatis dieksfiliasi ke dalam draf pesan WhatsApp admin kios untuk pengecekan fisik di gudang.
                 </p>
               </div>
@@ -438,7 +542,7 @@ export default function Products() {
                   href={getWhatsAppCartLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 bg-[#0D3B20]/95 hover:bg-[#205e24] dark:bg-[#70A83B] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3.5 px-4 rounded-xl text-[10px] font-black uppercase tracking-wider text-center flex items-center justify-center space-x-2 shadow-lg dark:shadow-none transition"
+                  className="flex-1 bg-[#11341C]/95 hover:bg-[#205e24] dark:bg-[#8FC14E] dark:hover:bg-[#22C55E] text-white dark:text-[#0F172A] py-3.5 px-4 rounded-xl text-[10px] font-black uppercase tracking-wider text-center flex items-center justify-center space-x-2 shadow-lg dark:shadow-none transition"
                 >
                   <PhoneCall className="h-4 w-4" />
                   <span>Kirim Pesan Ke Kios</span>
